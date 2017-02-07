@@ -28,6 +28,9 @@ do
 done
 
 echo "show table status in test;" >> "$tmp_file"
+echo "select MAX_DATA_LENGTH/AVG_ROW_LENGTH as \`max_rows\` from information_schema.tables where table_name = 'test';" >> "$tmp_file"
 
 cat $tmp_file | mysql -uroot -p $database_name
+
+rm "$tmp_file"
 

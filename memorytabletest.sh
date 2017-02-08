@@ -27,7 +27,7 @@ do
   echo "INSERT INTO \`test\` (column2, column3) VALUES ('$index', '$index');" >> "$tmp_file"
 done
 
-echo "show table status in test;" >> "$tmp_file"
+echo "show table status in $database_name like 'test';" >> "$tmp_file"
 echo "select MAX_DATA_LENGTH/AVG_ROW_LENGTH as \`max_rows\` from information_schema.tables where table_name = 'test';" >> "$tmp_file"
 
 cat $tmp_file | mysql -uroot -p $database_name

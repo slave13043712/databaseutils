@@ -10,7 +10,7 @@ echo "truncate $table_name;" >> "$tmp_file"
 # create/truncate will force MEMORY table to use values set above
 
 echo "show table status in $database_name like '$table_name';" >> "$tmp_file"
-echo "select MAX_DATA_LENGTH/AVG_ROW_LENGTH as \`max_rows\` from information_schema.tables where table_name = 'test';" >> "$tmp_file"
+echo "select MAX_DATA_LENGTH/AVG_ROW_LENGTH as \`max_rows\` from information_schema.tables where table_name = '$table_name' and table_schema = '$database_name';" >> "$tmp_file"
 
 cat $tmp_file | mysql -uroot -p $database_name
 
